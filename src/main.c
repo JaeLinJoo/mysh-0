@@ -18,7 +18,7 @@ int main()
 
     mysh_parse_command(buf, &argc, &argv);
 
-    if (strcmp(buf, "") == 0) {
+    if (strcmp(argv[0], "") == 0) {
       goto release_and_continue;
     } else if (strcmp(argv[0], "cd") == 0) {
       if (do_cd(argc, argv)) {
@@ -29,7 +29,7 @@ int main()
         fprintf(stderr, "pwd: Invalid arguments\n");
       }
     } else if (strcmp(argv[0], "exit") == 0) {
-      goto release_and_continue;
+      goto release_and_exit;
     } else {
       fprintf(stderr, "%s: command not found\n", argv[0]);
     }
